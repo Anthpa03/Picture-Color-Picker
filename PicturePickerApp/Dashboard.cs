@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace PicturePickerApp
 {
+   
     public partial class Dashboard : Form
     {
+        
         public Dashboard()
+        
+
         {
+            
             InitializeComponent();
+        }
+        
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
