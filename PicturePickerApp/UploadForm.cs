@@ -21,7 +21,6 @@ namespace PicturePickerApp
         {
             try
             {
-                //adds in file upload functionality
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "jpg files (*.jpg)|";
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
