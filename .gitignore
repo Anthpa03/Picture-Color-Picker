@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/.vs/Picture-Color-Picker/FileContentIndex/f577a8e3-da85-4b7d-9ed1-242193227649.vsidx
+/.vs/Picture-Color-Picker/v17/.wsuo
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
