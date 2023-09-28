@@ -19,7 +19,22 @@ namespace PicturePickerApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-         
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "jpg files (*.jpg)|";
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    pictureBox1.ImageLocation= dialog.FileName;
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Test");
+              
+            }
 
         }
 
