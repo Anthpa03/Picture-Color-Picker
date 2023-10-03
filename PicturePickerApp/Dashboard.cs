@@ -36,6 +36,7 @@ namespace PicturePickerApp
                 {
                     //c# display image in picture box 
                     pictureBox1.ImageLocation = dialog.FileName;
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     //c# image file path 
                     uploadText.Text = dialog.FileName;
                 }
