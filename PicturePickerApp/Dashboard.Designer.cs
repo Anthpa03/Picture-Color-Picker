@@ -40,6 +40,7 @@ namespace PicturePickerApp
             this.uploadButton1 = new System.Windows.Forms.Button();
             this.uploadText = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@ namespace PicturePickerApp
             this.pictureBox1.Size = new System.Drawing.Size(811, 509);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
             // 
             // uploadButton1
             // 
@@ -79,11 +80,19 @@ namespace PicturePickerApp
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(28, 26);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(272, 22);
+            this.textBox1.TabIndex = 4;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1472, 579);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.uploadText);
             this.Controls.Add(this.uploadButton1);
@@ -102,5 +111,6 @@ namespace PicturePickerApp
         private Button uploadButton1;
         private TextBox uploadText;
         private Button saveButton;
+        private TextBox textBox1;
     }
 }

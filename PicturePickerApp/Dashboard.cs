@@ -19,11 +19,6 @@ namespace PicturePickerApp
         {
             InitializeComponent();
         }
-        
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void uploadButton1_Click(object sender, EventArgs e)
         {
@@ -39,13 +34,39 @@ namespace PicturePickerApp
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     //c# image file path 
                     uploadText.Text = dialog.FileName;
+
+                    // Attach MouseClick event handler
+                    pictureBox1.MouseClick += new MouseEventHandler(pictureBox1_MouseClick);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Console.WriteLine("oop");
+                Console.WriteLine("Error: " + ex.Message);
             }
         }
 
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                Bitmap bmp = new Bitmap(pictureBox1.Image);
+
+                int x = e.X;
+                int y = e.Y;
+
+                Color pixelColor = bmp.GetPixel(x, y);
+
+                // htmlColor translates the RGB values from pixelColor to hex
+                String htmlColor = System.Drawing.ColorTranslator.ToHtml(pixelColor);
+                textBox1.Text = "Pixel Color: " + htmlColor;
+
+                bmp.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+        }
     }
 }
