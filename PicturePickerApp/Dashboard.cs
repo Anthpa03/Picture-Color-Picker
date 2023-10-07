@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System;
+using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+
 namespace PicturePickerApp
 {
    
@@ -18,15 +22,21 @@ namespace PicturePickerApp
         public Dashboard()
         {
             InitializeComponent();
+           
         }
 
         private void uploadButton1_Click(object sender, EventArgs e)
-        {
+        {   
+            OpenFileDialog dialog = new OpenFileDialog();
+            
+                dialog.Filter = "jpg files (*.jpg)|";
+            string fileExtension = Path.GetExtension(dialog.FileName);
+
             try
             {
+
                 // Open file with jpg filter
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Filter = "jpg files (*.jpg)|";
+                
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     //c# display image in picture box 
@@ -37,11 +47,37 @@ namespace PicturePickerApp
 
                     // Attach MouseClick event handler
                     pictureBox1.MouseClick += new MouseEventHandler(pictureBox1_MouseClick);
+                    
+                }
+                fileExtension = Path.GetExtension(dialog.FileName);//stores file type
+
+                //checks if file is of type .jpg
+                if (!string.Equals(fileExtension, ".jpg", StringComparison.OrdinalIgnoreCase))
+                {
+                    //if file is not .jpg, display error message
+                    pictureBox1.ImageLocation = null;
+                    label1.Text = "Invalid file format. Please upload a JPG image.";
+
+                    return;
+                }
+    
+                //checks if file exists
+                if (!File.Exists(dialog.FileName))
+                {
+                    pictureBox1.ImageLocation = null;
+                    //if file does not exist, display error message
+                    label1.Text = "File not found.";
+                    return;
+
+                }
+                else {//display success message if file was uploaded and file type is correct
+                    label1.Text = "File uploaded successfully.";
                 }
             }
+            
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("Error: " + ex.Message);   
             }
         }
 
@@ -59,7 +95,7 @@ namespace PicturePickerApp
                 // htmlColor translates the RGB values from pixelColor to hex
                 String htmlColor = System.Drawing.ColorTranslator.ToHtml(pixelColor);
                 textBox1.Text = "Pixel Color: " + htmlColor;
-
+                System.Windows.Forms.Clipboard.SetText(htmlColor);
                 bmp.Dispose();
 
             }
@@ -68,5 +104,7 @@ namespace PicturePickerApp
                 Console.WriteLine("Error: " + ex.Message);
             }
         }
+
+       
     }
 }
