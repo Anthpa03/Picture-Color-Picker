@@ -61,10 +61,10 @@ namespace PicturePickerApp
             // 
             // uploadButton1
             // 
-            this.uploadButton1.Location = new System.Drawing.Point(642, 436);
+            this.uploadButton1.Location = new System.Drawing.Point(787, 438);
             this.uploadButton1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.uploadButton1.Name = "uploadButton1";
-            this.uploadButton1.Size = new System.Drawing.Size(72, 22);
+            this.uploadButton1.Size = new System.Drawing.Size(72, 27);
             this.uploadButton1.TabIndex = 1;
             this.uploadButton1.Text = "Upload";
             this.uploadButton1.UseVisualStyleBackColor = true;
@@ -72,18 +72,18 @@ namespace PicturePickerApp
             // 
             // uploadText
             // 
-            this.uploadText.Location = new System.Drawing.Point(340, 436);
+            this.uploadText.Location = new System.Drawing.Point(327, 441);
             this.uploadText.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.uploadText.Name = "uploadText";
-            this.uploadText.Size = new System.Drawing.Size(299, 20);
+            this.uploadText.Size = new System.Drawing.Size(456, 20);
             this.uploadText.TabIndex = 2;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(251, 439);
+            this.saveButton.Location = new System.Drawing.Point(251, 438);
             this.saveButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(56, 19);
+            this.saveButton.Size = new System.Drawing.Size(72, 27);
             this.saveButton.TabIndex = 3;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
