@@ -85,26 +85,33 @@ namespace PicturePickerApp
         {
             try
             {
-                Bitmap bmp = new Bitmap(pictureBox1.Image);
+                if (pictureBox1.Image != null)
+                {
+                    // Calculate the scaling factor based on the original image size and stretched size
+                    float scaleX = (float)pictureBox1.Image.Width / pictureBox1.Width;
+                    float scaleY = (float)pictureBox1.Image.Height / pictureBox1.Height;
 
-                int x = e.X;
-                int y = e.Y;
+                    // Calculate the position in the original image based on the click location in the stretched image
+                    int originalX = (int)(e.X * scaleX);
+                    int originalY = (int)(e.Y * scaleY);
 
-                Color pixelColor = bmp.GetPixel(x, y);
+                    // Make sure the calculated position is within the bounds of the original image
+                    originalX = Math.Max(0, Math.Min(originalX, pictureBox1.Image.Width - 1));
+                    originalY = Math.Max(0, Math.Min(originalY, pictureBox1.Image.Height - 1));
 
-                // htmlColor translates the RGB values from pixelColor to hex
-                String htmlColor = System.Drawing.ColorTranslator.ToHtml(pixelColor);
-                textBox1.Text = "Pixel Color: " + htmlColor;
-                System.Windows.Forms.Clipboard.SetText(htmlColor);
-                bmp.Dispose();
+                    Bitmap bmp = new Bitmap(pictureBox1.Image);
+                    Color pixelColor = bmp.GetPixel(originalX, originalY);
 
+                    String htmlColor = System.Drawing.ColorTranslator.ToHtml(pixelColor);
+                    textBox1.Text = "Pixel Color: " + htmlColor;
+                    System.Windows.Forms.Clipboard.SetText(htmlColor);
+                    bmp.Dispose();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
         }
-
-       
     }
 }
