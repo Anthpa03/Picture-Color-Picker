@@ -9,34 +9,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using System;
+
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace PicturePickerApp
 {
-   
+
     public partial class Dashboard : Form
     {
-        
+        private bool pixelSelectionMode = false;
         public Dashboard()
         {
             InitializeComponent();
-           
+
         }
 
         private void uploadButton1_Click(object sender, EventArgs e)
-        {   
+        {
             OpenFileDialog dialog = new OpenFileDialog();
-            
-                dialog.Filter = "jpg files (*.jpg)|";
+
+            dialog.Filter = "jpg files (*.jpg)|";
             string fileExtension = Path.GetExtension(dialog.FileName);
 
             try
             {
 
                 // Open file with jpg filter
-                
+
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     //c# display image in picture box 
@@ -47,7 +47,7 @@ namespace PicturePickerApp
 
                     // Attach MouseClick event handler
                     pictureBox1.MouseClick += new MouseEventHandler(pictureBox1_MouseClick);
-                    
+
                 }
                 fileExtension = Path.GetExtension(dialog.FileName);//stores file type
 
@@ -60,7 +60,7 @@ namespace PicturePickerApp
 
                     return;
                 }
-    
+
                 //checks if file exists
                 if (!File.Exists(dialog.FileName))
                 {
@@ -70,14 +70,15 @@ namespace PicturePickerApp
                     return;
 
                 }
-                else {//display success message if file was uploaded and file type is correct
+                else
+                {//display success message if file was uploaded and file type is correct
                     label1.Text = "File uploaded successfully.";
                 }
             }
-            
+
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);   
+                Console.WriteLine("Error: " + ex.Message);
             }
         }
 
@@ -105,13 +106,37 @@ namespace PicturePickerApp
                     String htmlColor = System.Drawing.ColorTranslator.ToHtml(pixelColor);
                     textBox1.Text = "Pixel Color: " + htmlColor;
                     System.Windows.Forms.Clipboard.SetText(htmlColor);
-                    bmp.Dispose();
-                }
+                    if (!pixelSelectionMode)
+                    {
+                        // In color change mode, you can change the pixel color to a new color.
+                        Color newColor = Color.Red; // You can set the new color of your choice.
+                        bmp.SetPixel(originalX, originalY, newColor);
+                        pictureBox1.Image = (Image)bmp;
+                    }
+}
+                    
+                    
+                //bmp.Dispose();
+            
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pixelSelectionMode = !pixelSelectionMode;
+            if (!pixelSelectionMode)
+            {
+                button1.Text = "Select Pixel";
+            }
+            else
+            {
+                button1.Text = "Change Color";
+            }
+
         }
     }
 }
