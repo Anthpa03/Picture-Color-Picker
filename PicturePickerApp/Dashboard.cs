@@ -8,8 +8,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
@@ -18,11 +16,13 @@ namespace PicturePickerApp
 
     public partial class Dashboard : Form
     {
-        private bool pixelSelectionMode = false;
+        private bool pixelChangeColor = false;
+        int originalX;
+        int originalY;
         public Dashboard()
         {
             InitializeComponent();
-
+            button1.Enabled = false;
         }
 
         private void uploadButton1_Click(object sender, EventArgs e)
@@ -73,6 +73,7 @@ namespace PicturePickerApp
                 else
                 {//display success message if file was uploaded and file type is correct
                     label1.Text = "File uploaded successfully.";
+                    button1.Enabled = false;
                 }
             }
 
@@ -88,13 +89,14 @@ namespace PicturePickerApp
             {
                 if (pictureBox1.Image != null)
                 {
+                    button1.Enabled = true; // This enables the user's ability to manipulate the pixel's color
                     // Calculate the scaling factor based on the original image size and stretched size
                     float scaleX = (float)pictureBox1.Image.Width / pictureBox1.Width;
                     float scaleY = (float)pictureBox1.Image.Height / pictureBox1.Height;
 
                     // Calculate the position in the original image based on the click location in the stretched image
-                    int originalX = (int)(e.X * scaleX);
-                    int originalY = (int)(e.Y * scaleY);
+                    originalX = (int)(e.X * scaleX);
+                    originalY = (int)(e.Y * scaleY);
 
                     // Make sure the calculated position is within the bounds of the original image
                     originalX = Math.Max(0, Math.Min(originalX, pictureBox1.Image.Width - 1));
@@ -106,18 +108,20 @@ namespace PicturePickerApp
                     String htmlColor = System.Drawing.ColorTranslator.ToHtml(pixelColor);
                     textBox1.Text = "Pixel Color: " + htmlColor;
                     System.Windows.Forms.Clipboard.SetText(htmlColor);
-                    if (!pixelSelectionMode)
-                    {
-                        // In color change mode, you can change the pixel color to a new color.
-                        Color newColor = Color.Red; // You can set the new color of your choice.
-                        bmp.SetPixel(originalX, originalY, newColor);
-                        pictureBox1.Image = (Image)bmp;
-                    }
-}
-                    
-                    
-                //bmp.Dispose();
-            
+                    pixelChangeColor = true;
+                    //if (!pixelSelectionMode)
+                    //{
+                    //    ColorDialog colorDlg = new ColorDialog();
+                    //    colorDlg.AllowFullOpen = true;
+                    //    colorDlg.AnyColor = true;
+                    //    colorDlg.SolidColorOnly = false;
+                    //    if (colorDlg.ShowDialog() == DialogResult.OK)
+                    //    {
+                    //        bmp.SetPixel(originalX, originalY, colorDlg.Color);
+                    //    }
+                    //    pictureBox1.Image = (Image)bmp;
+                    //}
+                }
             }
             catch (Exception ex)
             {
@@ -127,14 +131,19 @@ namespace PicturePickerApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            pixelSelectionMode = !pixelSelectionMode;
-            if (!pixelSelectionMode)
-            {
-                button1.Text = "Select Pixel";
-            }
-            else
-            {
-                button1.Text = "Change Color";
+            button1.Text = "Change Color";
+            if(pixelChangeColor)
+            { 
+                Bitmap bmp = new Bitmap(pictureBox1.Image);
+                ColorDialog colorDlg = new ColorDialog();
+                colorDlg.AllowFullOpen = true;
+                colorDlg.AnyColor = true;
+                colorDlg.SolidColorOnly = false;
+                if (colorDlg.ShowDialog() == DialogResult.OK)
+                {
+                    bmp.SetPixel(originalX, originalY, colorDlg.Color);
+                }
+                pictureBox1.Image = (Image)bmp;
             }
 
         }

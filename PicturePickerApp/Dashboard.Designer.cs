@@ -22,8 +22,9 @@ namespace PicturePickerApp
             base.Dispose(disposing);
         }
 
-        private void displayImage() { 
-            
+        private void displayImage()
+        {
+
         }
 
 
@@ -46,6 +47,7 @@ namespace PicturePickerApp
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -127,7 +129,6 @@ namespace PicturePickerApp
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            //this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
             // Dashboard
             // 
@@ -163,5 +164,6 @@ namespace PicturePickerApp
         private Label label1;
         private TextBox textBox2;
         private Button button1;
+        private ColorDialog colorDialog1;
     }
 }
