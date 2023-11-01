@@ -22,10 +22,11 @@ namespace PicturePickerApp
         public Dashboard()
         {
             InitializeComponent();
-            button1.Enabled = false;
+            ChangeColor.Enabled = false;
+            saveButton.Enabled = false;
         }
 
-        private void uploadButton1_Click(object sender, EventArgs e)
+        private void UploadButton1_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
 
@@ -34,9 +35,7 @@ namespace PicturePickerApp
 
             try
             {
-
                 // Open file with jpg filter
-
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     //c# display image in picture box 
@@ -46,7 +45,7 @@ namespace PicturePickerApp
                     uploadText.Text = dialog.FileName;
 
                     // Attach MouseClick event handler
-                    pictureBox1.MouseClick += new MouseEventHandler(pictureBox1_MouseClick);
+                    pictureBox1.MouseClick += new MouseEventHandler(PictureBox1_MouseClick);
 
                 }
                 fileExtension = Path.GetExtension(dialog.FileName);//stores file type
@@ -57,7 +56,6 @@ namespace PicturePickerApp
                     //if file is not .jpg, display error message
                     pictureBox1.ImageLocation = null;
                     label1.Text = "Invalid file format. Please upload a JPG image.";
-
                     return;
                 }
 
@@ -71,9 +69,13 @@ namespace PicturePickerApp
 
                 }
                 else
-                {//display success message if file was uploaded and file type is correct
+                {
+                    //display success message if file was uploaded and file type is correct
+                    //Then sets the ability to change the color to false (again if uploading another picture)
+                    //and enables the ability to save the file
                     label1.Text = "File uploaded successfully.";
-                    button1.Enabled = false;
+                    ChangeColor.Enabled = false;
+                    saveButton.Enabled = true;
                 }
             }
 
@@ -83,13 +85,13 @@ namespace PicturePickerApp
             }
         }
 
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             try
             {
                 if (pictureBox1.Image != null)
                 {
-                    button1.Enabled = true; // This enables the user's ability to manipulate the pixel's color
+                    ChangeColor.Enabled = true; // This enables the user's ability to manipulate the pixel's color
                     // Calculate the scaling factor based on the original image size and stretched size
                     float scaleX = (float)pictureBox1.Image.Width / pictureBox1.Width;
                     float scaleY = (float)pictureBox1.Image.Height / pictureBox1.Height;
@@ -109,18 +111,6 @@ namespace PicturePickerApp
                     textBox1.Text = "Pixel Color: " + htmlColor;
                     System.Windows.Forms.Clipboard.SetText(htmlColor);
                     pixelChangeColor = true;
-                    //if (!pixelSelectionMode)
-                    //{
-                    //    ColorDialog colorDlg = new ColorDialog();
-                    //    colorDlg.AllowFullOpen = true;
-                    //    colorDlg.AnyColor = true;
-                    //    colorDlg.SolidColorOnly = false;
-                    //    if (colorDlg.ShowDialog() == DialogResult.OK)
-                    //    {
-                    //        bmp.SetPixel(originalX, originalY, colorDlg.Color);
-                    //    }
-                    //    pictureBox1.Image = (Image)bmp;
-                    //}
                 }
             }
             catch (Exception ex)
@@ -129,23 +119,42 @@ namespace PicturePickerApp
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ChangeColor_Click(object sender, EventArgs e)
         {
-            button1.Text = "Change Color";
             if(pixelChangeColor)
             { 
                 Bitmap bmp = new Bitmap(pictureBox1.Image);
-                ColorDialog colorDlg = new ColorDialog();
-                colorDlg.AllowFullOpen = true;
-                colorDlg.AnyColor = true;
-                colorDlg.SolidColorOnly = false;
+                ColorDialog colorDlg = new ColorDialog
+                {
+                    AllowFullOpen = true,
+                    AnyColor = true,
+                    SolidColorOnly = false
+                };
                 if (colorDlg.ShowDialog() == DialogResult.OK)
                 {
+                    pictureBox1.Image = bmp;
                     bmp.SetPixel(originalX, originalY, colorDlg.Color);
                 }
-                pictureBox1.Image = (Image)bmp;
             }
 
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "JPEG Image|*.jpg";
+            saveDialog.Title = "Save Image";
+
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                string savePath = saveDialog.FileName;
+
+                // Save the edited image to the specified location
+                Bitmap bmp = new Bitmap(pictureBox1.Image);
+                bmp.Save(savePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                MessageBox.Show("Image saved successfully.");
+            }
         }
     }
 }

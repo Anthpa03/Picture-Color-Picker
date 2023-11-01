@@ -46,7 +46,7 @@ namespace PicturePickerApp
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ChangeColor = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -54,49 +54,50 @@ namespace PicturePickerApp
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(376, 32);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(250, 21);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(912, 635);
+            this.pictureBox1.Size = new System.Drawing.Size(608, 413);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseClick);
             // 
             // uploadButton1
             // 
-            this.uploadButton1.Location = new System.Drawing.Point(1180, 674);
-            this.uploadButton1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.uploadButton1.Location = new System.Drawing.Point(787, 438);
+            this.uploadButton1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.uploadButton1.Name = "uploadButton1";
-            this.uploadButton1.Size = new System.Drawing.Size(108, 42);
+            this.uploadButton1.Size = new System.Drawing.Size(72, 28);
             this.uploadButton1.TabIndex = 1;
             this.uploadButton1.Text = "Upload";
             this.uploadButton1.UseVisualStyleBackColor = true;
-            this.uploadButton1.Click += new System.EventHandler(this.uploadButton1_Click);
+            this.uploadButton1.Click += new System.EventHandler(this.UploadButton1_Click);
             // 
             // uploadText
             // 
-            this.uploadText.Location = new System.Drawing.Point(490, 678);
-            this.uploadText.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.uploadText.Location = new System.Drawing.Point(327, 440);
+            this.uploadText.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.uploadText.Name = "uploadText";
-            this.uploadText.Size = new System.Drawing.Size(682, 26);
+            this.uploadText.Size = new System.Drawing.Size(456, 20);
             this.uploadText.TabIndex = 2;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(376, 674);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.saveButton.Location = new System.Drawing.Point(250, 438);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(108, 42);
+            this.saveButton.Size = new System.Drawing.Size(72, 28);
             this.saveButton.TabIndex = 3;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(32, 32);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.textBox1.Location = new System.Drawing.Point(21, 21);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(306, 26);
+            this.textBox1.Size = new System.Drawing.Size(205, 20);
             this.textBox1.TabIndex = 4;
             // 
             // errorProvider1
@@ -106,36 +107,37 @@ namespace PicturePickerApp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(106, 86);
+            this.label1.Location = new System.Drawing.Point(70, 56);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 20);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 5;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(1328, 31);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox2.Location = new System.Drawing.Point(885, 20);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(308, 635);
+            this.textBox2.Size = new System.Drawing.Size(206, 414);
             this.textBox2.TabIndex = 6;
             // 
-            // button1
+            // ChangeColor
             // 
-            this.button1.Location = new System.Drawing.Point(1328, 680);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ChangeColor.Location = new System.Drawing.Point(885, 440);
+            this.ChangeColor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ChangeColor.Name = "ChangeColor";
+            this.ChangeColor.Size = new System.Drawing.Size(106, 22);
+            this.ChangeColor.TabIndex = 7;
+            this.ChangeColor.Text = "Change Color";
+            this.ChangeColor.UseVisualStyleBackColor = true;
+            this.ChangeColor.Click += new System.EventHandler(this.ChangeColor_Click);
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1671, 725);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1114, 471);
+            this.Controls.Add(this.ChangeColor);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
@@ -143,7 +145,7 @@ namespace PicturePickerApp
             this.Controls.Add(this.uploadText);
             this.Controls.Add(this.uploadButton1);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "Dashboard";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -163,7 +165,7 @@ namespace PicturePickerApp
         private ErrorProvider errorProvider1;
         private Label label1;
         private TextBox textBox2;
-        private Button button1;
+        private Button ChangeColor;
         private ColorDialog colorDialog1;
     }
 }
