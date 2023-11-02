@@ -15,7 +15,6 @@ C:\Users\DALF2\source\repos\Picture-Color-Picker\PicturePickerApp\bin\Debug\Pict
 C:\Users\DALF2\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\PicturePickerApp.csproj.AssemblyReference.cache
 C:\Users\DALF2\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\PicturePickerApp.Dashboard.resources
 C:\Users\DALF2\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\PicturePickerApp.Properties.Resources.resources
-C:\Users\DALF2\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\PicturePickerApp.uploadForm.resources
 C:\Users\DALF2\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\PicturePickerApp.csproj.GenerateResource.cache
 C:\Users\DALF2\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\PicturePickerApp.csproj.CoreCompileInputs.cache
 C:\Users\DALF2\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\PicturePickerApp.exe
