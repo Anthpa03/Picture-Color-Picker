@@ -55,7 +55,8 @@ namespace PicturePickerApp
                 {
                     //if file is not .jpg, display error message
                     pictureBox1.ImageLocation = null;
-                    label1.Text = "Invalid file format. Please upload a JPG image.";
+                    MessageBox.Show("Invalid file format. Please upload a JPG image.");
+                    
                     return;
                 }
 
@@ -64,7 +65,8 @@ namespace PicturePickerApp
                 {
                     pictureBox1.ImageLocation = null;
                     //if file does not exist, display error message
-                    label1.Text = "File not found.";
+                    MessageBox.Show("File not found.");
+                    
                     return;
 
                 }
@@ -73,7 +75,8 @@ namespace PicturePickerApp
                     //display success message if file was uploaded and file type is correct
                     //Then sets the ability to change the color to false (again if uploading another picture)
                     //and enables the ability to save the file
-                    label1.Text = "File uploaded successfully.";
+               
+                    MessageBox.Show("File uploaded successfully.");
                     ChangeColor.Enabled = false;
                     saveButton.Enabled = true;
                 }
@@ -156,5 +159,7 @@ namespace PicturePickerApp
                 MessageBox.Show("Image saved successfully.");
             }
         }
+
+        
     }
 }
