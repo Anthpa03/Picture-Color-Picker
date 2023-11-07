@@ -40,3 +40,9 @@ C:\Users\ishas\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\Pict
 C:\Users\ishas\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\PicturePickerApp.csproj.CoreCompileInputs.cache
 C:\Users\ishas\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\PicturePickerApp.exe
 C:\Users\ishas\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\PicturePickerApp.pdb
+C:\Users\antho\source\repos\Picture-Color-Picker\PicturePickerApp\bin\Debug\aa\PicturePickerApp.resources.dll
+C:\Users\antho\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\PicturePickerApp.Dashboard.aa.resources
+C:\Users\antho\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\aa\PicturePickerApp.resources.dll
+C:\Users\antho\source\repos\Picture-Color-Picker\PicturePickerApp\bin\Debug\yo-BJ\PicturePickerApp.resources.dll
+C:\Users\antho\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\PicturePickerApp.Dashboard.yo-BJ.resources
+C:\Users\antho\source\repos\Picture-Color-Picker\PicturePickerApp\obj\Debug\yo-BJ\PicturePickerApp.resources.dll
