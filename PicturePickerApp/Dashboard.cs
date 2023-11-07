@@ -36,10 +36,38 @@ namespace PicturePickerApp
                 // Open file with jpg filter
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    //c# display image in picture box 
-                    pictureBox1.ImageLocation = dialog.FileName;
-                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                    //c# image file path 
+                    // Load the image
+                    Image originalImage = Image.FromFile(dialog.FileName);
+
+                    // Define the maximum dimensions for the displayed image (adjust these as needed)
+                    int maxWidth = 300;
+                    int maxHeight = 300;
+
+                    // Calculate the new width and height based on the original image's resolution
+                    int newWidth, newHeight;
+
+                    // Check if the original image is wider than it is tall
+                    if (originalImage.Width >= originalImage.Height)
+                    {
+                        newWidth = maxWidth;
+                        newHeight = (int)((float)originalImage.Height * maxWidth / originalImage.Width);
+                    }
+                    else
+                    {
+                        newHeight = maxHeight;
+                        newWidth = (int)((float)originalImage.Width * maxHeight / originalImage.Height);
+                    }
+
+                    // Create a new Bitmap with the lower resolution
+                    Bitmap lowResImage = new Bitmap(originalImage, newWidth, newHeight);
+
+                    // Set PictureBox1's SizeMode property to Zoom
+                    pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+
+                    // Display the lower resolution image in PictureBox1
+                    pictureBox1.Image = lowResImage;
+
+                    // Display the original file path
                     uploadText.Text = dialog.FileName;
 
                     // Attach MouseClick event handler
