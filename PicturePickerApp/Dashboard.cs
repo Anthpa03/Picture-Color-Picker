@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace PicturePickerApp
 {
@@ -17,13 +9,18 @@ namespace PicturePickerApp
     public partial class Dashboard : Form
     {
         private bool pixelChangeColor = false;
+        private bool colorSelectionMode = false;
         int originalX;
         int originalY;
         public Dashboard()
         {
             InitializeComponent();
+            TogglePixelSelection.Appearance = System.Windows.Forms.Appearance.Button;
+            Text = "Dashboard";
             ChangeColor.Enabled = false;
             saveButton.Enabled = false;
+            TogglePixelSelection.Enabled = false;
+            TogglePixelSelection.Click += TogglePixelSelection_Click;
         }
 
         private void UploadButton1_Click(object sender, EventArgs e)
@@ -56,7 +53,9 @@ namespace PicturePickerApp
                     //if file is not .jpg, display error message
                     pictureBox1.ImageLocation = null;
                     MessageBox.Show("Invalid file format. Please upload a JPG image.");
-                    
+                    ChangeColor.Enabled = false;
+                    saveButton.Enabled = false;
+                    TogglePixelSelection.Enabled = false;
                     return;
                 }
 
@@ -66,7 +65,9 @@ namespace PicturePickerApp
                     pictureBox1.ImageLocation = null;
                     //if file does not exist, display error message
                     MessageBox.Show("File not found.");
-                    
+                    ChangeColor.Enabled = false;
+                    saveButton.Enabled = false;
+                    TogglePixelSelection.Enabled = false;
                     return;
 
                 }
@@ -79,6 +80,7 @@ namespace PicturePickerApp
                     MessageBox.Show("File uploaded successfully.");
                     ChangeColor.Enabled = false;
                     saveButton.Enabled = true;
+                    TogglePixelSelection.Enabled = true;
                 }
             }
 
@@ -92,7 +94,7 @@ namespace PicturePickerApp
         {
             try
             {
-                if (pictureBox1.Image != null)
+                if (pictureBox1.Image != null && colorSelectionMode)
                 {
                     ChangeColor.Enabled = true; // This enables the user's ability to manipulate the pixel's color
                     // Calculate the scaling factor based on the original image size and stretched size
@@ -160,6 +162,16 @@ namespace PicturePickerApp
             }
         }
 
-        
+        private void TogglePixelSelection_Click(object sender, EventArgs e)
+        {
+            if (TogglePixelSelection.Checked)
+            {
+                colorSelectionMode = true;
+            }
+            else
+            {
+                colorSelectionMode = false;
+            }
+        }
     }
 }
