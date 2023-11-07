@@ -13,8 +13,6 @@ namespace PicturePickerApp
         int originalX;
         int originalY;
 
-        private Rectangle buttonOriginalRectangle;
-        private Rectangle originalDashboardSize;
         public Dashboard()
         {
             InitializeComponent();
@@ -24,32 +22,6 @@ namespace PicturePickerApp
             saveButton.Enabled = false;
             TogglePixelSelection.Enabled = false;
             TogglePixelSelection.Click += TogglePixelSelection_Click;
-        }
-
-        private void Dashboard_Load(object sender, EventArgs e)
-        {
-            originalDashboardSize = new Rectangle(this.Location.X, this.Location.Y, this.Size.Width, this.Size.Height);
-            buttonOriginalRectangle = new Rectangle(ChangeColor.Location.X, ChangeColor.Location.Y, ChangeColor.Width, ChangeColor.Height);
-        }
-
-        private void resizeControl(Rectangle r, Control c)
-        {
-            float xRatio = (float)(this.Width) / (float)(originalDashboardSize.Width);
-            float yRatio = (float)(this.Height) / (float)(originalDashboardSize.Height);
-
-            int newX = (int)(r.Width * xRatio);
-            int newY = (int)(r.Height * yRatio);
-
-            int newWidth = (int)(r.Width * xRatio);
-            int newHeight = (int)(r.Height * yRatio);
-
-            c.Location = new Point(newX, newY);
-            c.Size = new Size(newWidth, newHeight);
-        }
-
-        private void Dashboard_Resize(object sender, EventArgs e)
-        {
-            resizeControl(buttonOriginalRectangle, ChangeColor);
         }
 
         private void UploadButton1_Click(object sender, EventArgs e)
