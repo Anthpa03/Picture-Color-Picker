@@ -14,8 +14,6 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
-using static System.Net.WebRequestMethods;
-using System.Collections.Generic;
 
 namespace PicturePickerApp
 {
@@ -44,16 +42,36 @@ namespace PicturePickerApp
 
         private void UploadButton1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-
-            dialog.Filter = "jpg files (*.jpg)|";
-            string fileExtension = Path.GetExtension(dialog.FileName);
+            if (colorSelectionMode) // If the user has selected the upload button, then the color selection mode is disabled to retain consistency
+            { 
+                colorSelectionMode = false;
+            }
+            ChangeColor.Enabled = false; // Disable color change ability since no pixel is selected
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Filter = "jpg files (*.jpg)|"
+            };
 
             try
             {
+                // Check if TogglePixelSelection is checked and uncheck it if true
+                if (TogglePixelSelection.Checked)
+                {
+                    TogglePixelSelection.Checked = false;
+                }
                 // Open file with jpg filter
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    string fileExtension = Path.GetExtension(dialog.FileName);
+
+                    // Check if the selected file is not a .jpg
+                    if (!string.Equals(fileExtension, ".jpg", StringComparison.OrdinalIgnoreCase))
+                    {
+                        // Display error message
+                        MessageBox.Show("Invalid file format. Please upload a JPG image.");
+                        return;
+                    }
+
                     // Load the image
                     Image originalImage = Image.FromFile(dialog.FileName);
 
@@ -91,49 +109,16 @@ namespace PicturePickerApp
                     // Attach MouseClick event handler
                     pictureBox1.MouseClick += new MouseEventHandler(PictureBox1_MouseClick);
 
-                }
-                fileExtension = Path.GetExtension(dialog.FileName);//Stores file type
+                    MessageBox.Show("File uploaded successfully.");// Display success message 
 
-                //Checks if file is of type .jpg
-                if (!string.Equals(fileExtension, ".jpg", StringComparison.OrdinalIgnoreCase))
-                {
-                    //If file is not .jpg, display error message
-                    pictureBox1.ImageLocation = null;
-                    MessageBox.Show("Invalid file format. Please upload a JPG image.");
-                    //Disable buttons since image format is wrong
-                    ChangeColor.Enabled = false;
-                    saveButton.Enabled = false;
-                    TogglePixelSelection.Enabled = false;
-                    return;
-                }
-
-                //checks if file exists
-                if (!System.IO.File.Exists(dialog.FileName))
-
-                {
-                    pictureBox1.ImageLocation = null;
-                    //if file does not exist, display error message
-                    MessageBox.Show("File not found.");
-                    //Disable buttons since image does not exist
-                    ChangeColor.Enabled = false;
-                    saveButton.Enabled = false;
-                    TogglePixelSelection.Enabled = false;
-                    return;
-
-                }
-                else
-                {
-               
-                    MessageBox.Show("File uploaded successfully.");//Display success message 
-                    ChangeColor.Enabled = false;//Disable color change ability since no pixel is selected
-                    saveButton.Enabled = true;//Enable saving ability
-                    TogglePixelSelection.Enabled = true;//Enable pixel selection
+                    // Enable or disable buttons based on successful file upload
+                    saveButton.Enabled = true; // Enable saving ability
+                    TogglePixelSelection.Enabled = true; // Enable pixel selection
                 }
             }
-
-            catch (Exception ex)//catch errors
+            catch (Exception ex)
             {
-                //display error
+                // Display error
                 Console.WriteLine("Error: " + ex.Message);
             }
         }
@@ -197,7 +182,7 @@ namespace PicturePickerApp
 
         private void SaveButton_Click(object sender, EventArgs e)//when user clicks save button
         {
-            // Create a SaveFileDialog to allow the user to choose the save location and file name
+            /// Create a SaveFileDialog to allow the user to choose the save location and file name
             SaveFileDialog saveDialog = new SaveFileDialog();
             saveDialog.Filter = "JPEG Image|*.jpg";// Set filter to show only JPEG files
             saveDialog.Title = "Save Image";
@@ -219,14 +204,17 @@ namespace PicturePickerApp
 
         private void TogglePixelSelection_Click(object sender, EventArgs e)
         {
-            // Toggle color selection mode based on the state of the TogglePixelSelection checkbox
+            /// Toggle color selection mode based on the state of the TogglePixelSelection checkbox
             if (TogglePixelSelection.Checked)
             {
-                colorSelectionMode = true;// Enable color selection mode
+                colorSelectionMode = true; // Enable color selection mode
             }
             else
             {
-                colorSelectionMode = false;// Disable color selection mode
+                colorSelectionMode = false; // Disable color selection mode
+
+                // Disable color change button when exiting pixel selection mode
+                ChangeColor.Enabled = false;
             }
         }
     }
