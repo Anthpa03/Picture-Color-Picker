@@ -49,6 +49,8 @@ namespace PicturePickerApp
             this.ChangeColor = new System.Windows.Forms.Button();
             this.TogglePixelSelection = new System.Windows.Forms.CheckBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.UndoButton = new System.Windows.Forms.Button();
+            this.RedoButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -106,10 +108,26 @@ namespace PicturePickerApp
             this.TogglePixelSelection.Name = "TogglePixelSelection";
             this.TogglePixelSelection.UseVisualStyleBackColor = true;
             // 
+            // UndoButton
+            // 
+            resources.ApplyResources(this.UndoButton, "UndoButton");
+            this.UndoButton.Name = "UndoButton";
+            this.UndoButton.UseVisualStyleBackColor = true;
+            this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
+            // 
+            // RedoButton
+            // 
+            resources.ApplyResources(this.RedoButton, "RedoButton");
+            this.RedoButton.Name = "RedoButton";
+            this.RedoButton.UseVisualStyleBackColor = true;
+            this.RedoButton.Click += new System.EventHandler(this.RedoButton_Click);
+            // 
             // Dashboard
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.RedoButton);
+            this.Controls.Add(this.UndoButton);
             this.Controls.Add(this.TogglePixelSelection);
             this.Controls.Add(this.ChangeColor);
             this.Controls.Add(this.label1);
@@ -140,5 +158,7 @@ namespace PicturePickerApp
         private Button ChangeColor;
         private ColorDialog colorDialog1;
         private CheckBox TogglePixelSelection;
+        private Button RedoButton;
+        private Button UndoButton;
     }
 }

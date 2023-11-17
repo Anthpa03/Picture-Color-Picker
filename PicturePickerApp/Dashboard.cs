@@ -14,6 +14,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections.Generic;
 
 namespace PicturePickerApp
 {
@@ -24,6 +25,11 @@ namespace PicturePickerApp
         // Initialize ariables to manage pixel color change and color selection mode
         private bool pixelChangeColor = false;//checks whether there is a pixel selected to be changed
         private bool colorSelectionMode = false;//checks whether user is in color selection mode or pixel color change mode
+
+        // Maintain a list to store image states for undo/redo
+        List<Bitmap> imageStates = new List<Bitmap>();
+        int currentStateIndex = -1; // Track the index of the current state
+
         //Stores the coordinates of the selected pixel
         int originalX;
         int originalY;
@@ -36,6 +42,8 @@ namespace PicturePickerApp
             Text = "Dashboard";
             ChangeColor.Enabled = false;
             saveButton.Enabled = false;
+            UndoButton.Enabled = false;
+            RedoButton.Enabled = false;
             TogglePixelSelection.Enabled = false;
             TogglePixelSelection.Click += TogglePixelSelection_Click;
         }
@@ -109,11 +117,14 @@ namespace PicturePickerApp
                     // Attach MouseClick event handler
                     pictureBox1.MouseClick += new MouseEventHandler(PictureBox1_MouseClick);
 
-                    MessageBox.Show("File uploaded successfully.");// Display success message 
+                    MessageBox.Show("File uploaded successfully.");// Display success message
+                    AddCurrentStateToHistory(); // Save the initial state of the uploaded image
 
                     // Enable or disable buttons based on successful file upload
                     saveButton.Enabled = true; // Enable saving ability
                     TogglePixelSelection.Enabled = true; // Enable pixel selection
+                    UndoButton.Enabled = true; // Enable undo ability
+                    RedoButton.Enabled = true; // Enavke redo ability
                 }
             }
             catch (Exception ex)
@@ -175,6 +186,7 @@ namespace PicturePickerApp
                 {
                     pictureBox1.Image = bmp;
                     bmp.SetPixel(originalX, originalY, colorDlg.Color);//Change pixel color on the bitmap to selected color
+                    AddCurrentStateToHistory(); // Save the state after changing pixel color
                 }
             }
 
@@ -192,6 +204,9 @@ namespace PicturePickerApp
             {
                 // Get the selected file path
                 string savePath = saveDialog.FileName;
+
+                // Save the state before saving the image
+                AddCurrentStateToHistory();
 
                 // Save the edited image to the specified location
                 Bitmap bmp = new Bitmap(pictureBox1.Image);
@@ -217,5 +232,42 @@ namespace PicturePickerApp
                 ChangeColor.Enabled = false;
             }
         }
+
+        // Method to add the current state to the list
+        private void AddCurrentStateToHistory()
+        {
+            Bitmap currentState = new Bitmap(pictureBox1.Image);
+
+            // If the current state is not at the end of the history list,
+            // remove the states ahead and add the current state
+            if (currentStateIndex < imageStates.Count - 1)
+            {
+                imageStates.RemoveRange(currentStateIndex + 1, imageStates.Count - currentStateIndex - 1);
+            }
+
+            imageStates.Add(currentState);
+            currentStateIndex = imageStates.Count - 1;
+        }
+
+        // Undo Button Click Event
+        private void UndoButton_Click(object sender, EventArgs e)
+        {
+            if (currentStateIndex > 0)
+            {
+                currentStateIndex--;
+                pictureBox1.Image = new Bitmap(imageStates[currentStateIndex]);
+            }
+        }
+
+        // Redo Button Click Event
+        private void RedoButton_Click(object sender, EventArgs e)
+        {
+            if (currentStateIndex < imageStates.Count - 1)
+            {
+                currentStateIndex++;
+                pictureBox1.Image = new Bitmap(imageStates[currentStateIndex]);
+            }
+        }
+
     }
 }

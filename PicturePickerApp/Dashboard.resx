@@ -123,13 +123,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>374, 35</value>
+    <value>291, 28</value>
   </data>
   <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>914, 667</value>
+    <value>711, 540</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
@@ -145,16 +145,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="uploadButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1180, 708</value>
+    <value>918, 573</value>
   </data>
   <data name="uploadButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="uploadButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 44</value>
+    <value>84, 36</value>
   </data>
   <data name="uploadButton1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -172,16 +172,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;uploadButton1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="uploadText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>491, 712</value>
+    <value>382, 576</value>
   </data>
   <data name="uploadText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="uploadText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>683, 28</value>
+    <value>532, 25</value>
   </data>
   <data name="uploadText.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -196,16 +196,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;uploadText.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>374, 708</value>
+    <value>291, 573</value>
   </data>
   <data name="saveButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 44</value>
+    <value>84, 36</value>
   </data>
   <data name="saveButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -223,16 +223,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 35</value>
+    <value>24, 28</value>
   </data>
   <data name="textBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 28</value>
+    <value>238, 25</value>
   </data>
   <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -247,7 +247,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -259,10 +259,58 @@
     <value>25</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>9, 21</value>
+    <value>7, 17</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1670, 761</value>
+    <value>1299, 616</value>
+  </data>
+  <data name="RedoButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>105, 153</value>
+  </data>
+  <data name="RedoButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 32</value>
+  </data>
+  <data name="RedoButton.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="RedoButton.Text" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="&gt;&gt;RedoButton.Name" xml:space="preserve">
+    <value>RedoButton</value>
+  </data>
+  <data name="&gt;&gt;RedoButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RedoButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;RedoButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="UndoButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 153</value>
+  </data>
+  <data name="UndoButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 32</value>
+  </data>
+  <data name="UndoButton.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="UndoButton.Text" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="&gt;&gt;UndoButton.Name" xml:space="preserve">
+    <value>UndoButton</value>
+  </data>
+  <data name="&gt;&gt;UndoButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UndoButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;UndoButton.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="TogglePixelSelection.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
@@ -273,7 +321,7 @@
   <data name="TogglePixelSelection.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAAAlZJREFUaEPtmUuoTVEYgI/3a6AkKQMGZIaSN3lkIJRXiJiRkQGTOzQzUUbeA5mY
+        DAAACwwBP0AiyAAAAlZJREFUaEPtmUuoTVEYgI/3a6AkKQMGZIaSN3lkIJRXiJiRkQGTOzQzUUbeA5mY
         CHkrRTKXGCgTc5J33uH7jruyzrnrnM5V2mvX+uqru//uYH3tve5Z+9xGoVAoFAp/mY17cR2OcFA3huBR
         /BX5CCdjbTDiGMYRwac4HrOnW0TwEGaBix3758cWeonQa1g5Q/EsvsI5DvrpNUL9vUoJEWFBcYyPS7zY
         Tr7HGVgZ7RHBEDMVn/fPOvkBl2JldIoI9hJTeYSsx9TiYrvFZBEhw/A8xotLmYrJJiLwLzFPMKuIwDh8
@@ -287,10 +335,7 @@
 </value>
   </data>
   <data name="TogglePixelSelection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 162</value>
-  </data>
-  <data name="TogglePixelSelection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>206, 71</value>
   </data>
   <data name="TogglePixelSelection.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 56</value>
@@ -308,16 +353,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TogglePixelSelection.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="ChangeColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>109, 90</value>
+    <value>24, 85</value>
   </data>
   <data name="ChangeColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="ChangeColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 36</value>
+    <value>123, 29</value>
   </data>
   <data name="ChangeColor.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -335,16 +380,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ChangeColor.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
+    <value>78, 19</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -359,13 +401,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 7.8pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Dashboard</value>
