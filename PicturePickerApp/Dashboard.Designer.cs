@@ -45,12 +45,12 @@ namespace PicturePickerApp
             this.saveButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.ChangeColor = new System.Windows.Forms.Button();
             this.TogglePixelSelection = new System.Windows.Forms.CheckBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.UndoButton = new System.Windows.Forms.Button();
             this.RedoButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -90,11 +90,6 @@ namespace PicturePickerApp
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // ChangeColor
             // 
             resources.ApplyResources(this.ChangeColor, "ChangeColor");
@@ -122,20 +117,27 @@ namespace PicturePickerApp
             this.RedoButton.UseVisualStyleBackColor = true;
             this.RedoButton.Click += new System.EventHandler(this.RedoButton_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
             // Dashboard
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.RedoButton);
             this.Controls.Add(this.UndoButton);
             this.Controls.Add(this.TogglePixelSelection);
             this.Controls.Add(this.ChangeColor);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.uploadText);
             this.Controls.Add(this.uploadButton1);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panel1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Dashboard";
@@ -154,11 +156,11 @@ namespace PicturePickerApp
         private Button saveButton;
         private TextBox textBox1;
         private ErrorProvider errorProvider1;
-        private Label label1;
         private Button ChangeColor;
         private ColorDialog colorDialog1;
         private CheckBox TogglePixelSelection;
         private Button RedoButton;
         private Button UndoButton;
+        private Panel panel1;
     }
 }

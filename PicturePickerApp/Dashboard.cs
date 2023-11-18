@@ -1,5 +1,4 @@
-﻿
-//Authors: Isha Swamy, Anthony Parra, David Liendo, Tristan Hernandez
+﻿//Authors: Isha Swamy, Anthony Parra, David Liendo, Tristan Hernandez
 
 //Version: 1.1, 11/19/2023
 
@@ -18,21 +17,20 @@ using System.Collections.Generic;
 
 namespace PicturePickerApp
 {
-
     public partial class Dashboard : Form
-
     {
         // Initialize ariables to manage pixel color change and color selection mode
         private bool pixelChangeColor = false;//checks whether there is a pixel selected to be changed
         private bool colorSelectionMode = false;//checks whether user is in color selection mode or pixel color change mode
-
-        // Maintain a list to store image states for undo/redo
-        List<Bitmap> imageStates = new List<Bitmap>();
+        List<Bitmap> imageStates = new List<Bitmap>(); // Maintain a list to store image states for undo/redo
         int currentStateIndex = -1; // Track the index of the current state
 
         //Stores the coordinates of the selected pixel
         int originalX;
         int originalY;
+
+        // Load the eyedropper cursor from the file within the direcotry
+        private string cursorFilePath = "../resources/cursor.cur";
 
         public Dashboard()
         {
@@ -194,7 +192,7 @@ namespace PicturePickerApp
 
         private void SaveButton_Click(object sender, EventArgs e)//when user clicks save button
         {
-            /// Create a SaveFileDialog to allow the user to choose the save location and file name
+            // Create a SaveFileDialog to allow the user to choose the save location and file name
             SaveFileDialog saveDialog = new SaveFileDialog();
             saveDialog.Filter = "JPEG Image|*.jpg";// Set filter to show only JPEG files
             saveDialog.Title = "Save Image";
@@ -219,17 +217,17 @@ namespace PicturePickerApp
 
         private void TogglePixelSelection_Click(object sender, EventArgs e)
         {
-            /// Toggle color selection mode based on the state of the TogglePixelSelection checkbox
+            // Toggle color selection mode based on the state of the TogglePixelSelection checkbox
             if (TogglePixelSelection.Checked)
             {
                 colorSelectionMode = true; // Enable color selection mode
+                Cursor = new Cursor(cursorFilePath); // Change cursor to an eyedropper when pixel selection is toggled
             }
             else
             {
                 colorSelectionMode = false; // Disable color selection mode
-
-                // Disable color change button when exiting pixel selection mode
-                ChangeColor.Enabled = false;
+                Cursor = Cursors.Default; // Change cursor back to default when pixel selection is toggled off
+                ChangeColor.Enabled = false; // Disable color change button when exiting pixel selection mode
             }
         }
 
@@ -268,6 +266,5 @@ namespace PicturePickerApp
                 pictureBox1.Image = new Bitmap(imageStates[currentStateIndex]);
             }
         }
-
     }
 }
