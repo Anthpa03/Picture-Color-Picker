@@ -30,7 +30,7 @@ namespace PicturePickerApp
         int originalY;
 
         // Load the eyedropper cursor from the file within the direcotry
-        private string cursorFilePath = "../resources/cursor.cur";
+        private string cursorFilePath = "./resources/cursor.cur";
 
         public Dashboard()
         {
