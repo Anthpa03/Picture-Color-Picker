@@ -51,6 +51,7 @@ namespace PicturePickerApp
             if (colorSelectionMode) // If the user has selected the upload button, then the color selection mode is disabled to retain consistency
             { 
                 colorSelectionMode = false;
+                Cursor = Cursors.Default; // This also applies to the cursor
             }
             ChangeColor.Enabled = false; // Disable color change ability since no pixel is selected
             OpenFileDialog dialog = new OpenFileDialog
