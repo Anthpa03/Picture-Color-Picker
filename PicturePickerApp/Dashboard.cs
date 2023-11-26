@@ -25,6 +25,7 @@ namespace PicturePickerApp
         List<Bitmap> imageStates = new List<Bitmap>(); // Maintain a list to store image states for undo/redo
         int currentStateIndex = -1; // Track the index of the current state
 
+        Image originalImage;
         //Stores the coordinates of the selected pixel
         int originalX;
         int originalY;
@@ -49,7 +50,7 @@ namespace PicturePickerApp
         private void UploadButton1_Click(object sender, EventArgs e)
         {
             if (colorSelectionMode) // If the user has selected the upload button, then the color selection mode is disabled to retain consistency
-            { 
+            {
                 colorSelectionMode = false;
                 Cursor = Cursors.Default; // This also applies to the cursor
             }
@@ -80,11 +81,11 @@ namespace PicturePickerApp
                     }
 
                     // Load the image
-                    Image originalImage = Image.FromFile(dialog.FileName);
+                    originalImage = Image.FromFile(dialog.FileName);
 
                     // Define the maximum dimensions for the displayed image
-                    int maxWidth = 300;
-                    int maxHeight = 300;
+                    int maxWidth = 400;
+                    int maxHeight = 400;
 
                     // Declare variables for the new width and height based on the original image's resolution
                     int newWidth, newHeight;
@@ -172,8 +173,8 @@ namespace PicturePickerApp
 
         private void ChangeColor_Click(object sender, EventArgs e)//When user clicks change color button
         {
-            if(pixelChangeColor)//Verify pixel is selected
-            { 
+            if (pixelChangeColor)//Verify pixel is selected
+            {
                 Bitmap bmp = new Bitmap(pictureBox1.Image);//Create bitmap of image
                 ColorDialog colorDlg = new ColorDialog//Create color dialog for user to pick a color
                 {
@@ -193,6 +194,23 @@ namespace PicturePickerApp
 
         private void SaveButton_Click(object sender, EventArgs e)//when user clicks save button
         {
+            // Declare variables for the new width and height based on the original image's resolution
+            int newWidth, newHeight;
+
+            // Check if the original image is wider than it is tall
+            if (originalImage.Width >= originalImage.Height)//if image is landscape
+            {
+                newWidth = 2000;
+                newHeight = (int)((float)originalImage.Height * 2000 / originalImage.Width);
+            }
+            else//if image is portrait
+            {
+                newHeight = 2000;
+                newWidth = (int)((float)originalImage.Width * 2000 / originalImage.Height);
+            }
+
+            Bitmap highResImage = new Bitmap(pictureBox1.Image, newWidth, newHeight);
+
             // Create a SaveFileDialog to allow the user to choose the save location and file name
             SaveFileDialog saveDialog = new SaveFileDialog();
             saveDialog.Filter = "JPEG Image|*.jpg";// Set filter to show only JPEG files
@@ -208,8 +226,8 @@ namespace PicturePickerApp
                 AddCurrentStateToHistory();
 
                 // Save the edited image to the specified location
-                Bitmap bmp = new Bitmap(pictureBox1.Image);
-                bmp.Save(savePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                highResImage.Save(savePath, System.Drawing.Imaging.ImageFormat.Jpeg);
 
                 // Display a success message to the user
                 MessageBox.Show("Image saved successfully.");
